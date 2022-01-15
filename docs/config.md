@@ -188,4 +188,25 @@ aliases {
 
 eval=false
 
+////كود معلومات البوت
+client.on("message", (message) => {
+  if (message.content === prefix + "bot") {
+    const bot = new Discord.RichEmbed()
+      .setAuthor(client.user.username, client.user.avatarURL)
+      .setColor("#00000")
+      .addField(
+        "✽ **Bot Ping** : ",
+        `» ${Date.now() - client.createdTimestamp}` + " ms",
+        true
+      )
+      .addField("**Servers** :  ", `» ${client.guilds.size}`, true)
+      .addField("**Channels** : ", `» ${client.channels.size} `, true)
+      .addField("**Users** : ", `» ${client.users.size} `, true)
+      .addField("**Bot Name** :  ", `» ${client.user.tag} `, true)
+      .addField("**Bot Owner** :  ", `» <@610076306549243916>`, true) // تعديل اساسي غير الايدي لايدي حسابك
+      .setImage("")
+      .setFooter(message.author.username, message.client.avatarURL);
+    message.channel.send(bot);
+  }
+});
 ```
